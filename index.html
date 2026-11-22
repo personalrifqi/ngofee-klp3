@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NGOFEE</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header id="header-section" data-role="CEO">
+    <h1>NGOFEE</h1>
+    <nav>
+      <a href="#hero-section">Beranda</a>
+      <a href="#catalog-section">Katalog</a>
+      <a href="#calc-section">Kalkulator</a>
+    </nav>
+  </header>
+
+  <!-- ===== AREA PM 1: HERO SECTION ===== -->
+<section id="hero-section" data-role="PM">
+  <h1>NGOFEE: Kopi Literan Segar & Kotak Snack Rapat, Diantar Tepat Waktu</h1>
+  <p>
+Solusi praktis pesan antar kopi kemasan literan racikan barista dan paket snack rapat siap saji. Hemat waktu, kualitas rasa terjaga, dan siap diantar langsung ke ruang kerja atau acara Anda. 
+  </p>
+  <ul class="hero-benefits">
+    <li><strong>100% Biji Kopi Pilihan:</strong> dan menggunakan biji kopi nusantara berkualitas tinggi</li>
+    <li>Diantar tepat waktu sebelum rapat dimulai</li>
+    <li>Harga transparan dan ada diskon dengan kode promo</li>
+  </ul>
+  <a href="#calc-section" class="btn-cta">Hitung Estimasi Pesanan Sekarang </a>
+</section>
+
+  <!-- ===== AREA PM 2: CATALOG SECTION ===== -->
+<section id="catalog-section" data-role="PM">
+  <h2>Katalog Paket NGOFEE</h2>
+  <div class="package-grid">
+
+
+    <div class="package-card">
+      <h3>Paket Kopi Susu Gula Aren</h3>
+      <p>Kopi susu gula aren kemasan 1 liter. Manis legit dan creamy, cukup untuk 4 sampai 5 gelas.</p>
+      <p class="price">Rp75.000</p>
+      <p class="promo-info">Diskon 10% dengan kode <strong>NGOFEEHEMAT</strong> atau beli minimal 3</p>
+    </div>
+
+
+    <div class="package-card">
+      <h3>Paket Kopi Seduh Dingin</h3>
+      <p>Cold brew kemasan 1 liter. Rasa lebih halus dan rendah asam, segar diminum dingin sepanjang rapat.</p>
+      <p class="price">Rp90.000</p>
+      <p class="promo-info">Diskon 10% dengan kode <strong>NGOFEEHEMAT</strong> atau beli minimal 3</p>
+    </div>
+
+
+    <div class="package-card">
+      <h3>Paket Kotak Konsumsi Rapat</h3>
+      <p>1 liter kopi plus snack untuk 4 orang (roti isi, risoles, atau kue basah). Praktis untuk rapat kecil, tinggal bagikan.</p>
+      <p class="price">Rp150.000</p>
+      <p class="promo-info">Diskon 10% dengan kode <strong>NGOFEEHEMAT</strong> atau beli minimal 3</p>
+    </div>
+
+
+  </div>
+</section>
+
+
+  <!-- ===== AREA SE 1: CALC SECTION ===== -->
+
+
+<section id="calc-section" data-role="SE">
+  <h2>Kalkulator Pesanan</h2>
+  <form id="form-kalkulator" onsubmit="return false;">
+
+    <label for="paket">Pilih paket</label>
+    <select id="paket">
+      <option value="">-- Pilih paket --</option>
+      <option value="kopi-susu-gula-aren">Kopi Susu Gula Aren - Rp75.000</option>
+      <option value="kopi-seduh-dingin">Kopi Seduh Dingin - Rp90.000</option>
+      <option value="kotak-konsumsi-rapat">Kotak Konsumsi Rapat - Rp150.000</option>
+    </select>
+
+    <label for="jumlah">Jumlah botol / kotak</label>
+    <input type="number" id="jumlah" min="1" value="1">
+
+    <label for="kode-promo">Kode promo (opsional)</label>
+    <input type="text" id="kode-promo" placeholder="Contoh: NGOFEEHEMAT">
+
+    <button type="button" id="tombol-hitung">Hitung Total</button>
+
+    <div id="hasil" aria-live="polite">Hasil perhitungan akan tampil di sini.</div>
+  </form>
+</section>
+
+  <footer id="footer-section" data-role="CEO">
+    <p>Hak cipta NGOFEE. WebDev C, Kelompok 3.</p>
+    <p>Anggota: Rifqi Muhammad Bimasakti, Nada Tsuraya, Irfan Muhammad Latif, Muhammad Rizky Ramadhan, Jeigra Ariella, Muhammad Arsyad Arroyan</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

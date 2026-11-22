@@ -1,0 +1,291 @@
+/* IMPORT GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+
+
+
+/* =========================================================
+   ===== AREA UI/UX 1: WARNA, TIPOGRAFI, TATA LETAK, RESPONSIF =====
+   ========================================================= */
+
+
+/* 1. Skema warna & variabel */
+:root {
+  --ink: #2a1a12;    /* espresso: teks, garis, hero, footer */
+  --bean: #6a4125;   /* mocha: teks pendukung */
+  --amber: #f4b223;  /* gula aren: warna aksen utama */
+  --milk: #fffaf0;   /* susu: latar halaman */
+
+
+  --font-judul: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-isi: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+
+  /* tepi kiri-kanan: isi maksimal 1100px & rata tengah, latar tetap penuh */
+  --gutter: max(1.25rem, calc((100% - 1100px) / 2));
+}
+
+
+/* 2. Reset & tipografi */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+html { scroll-padding-top: 5rem; } /* judul tidak tertutup header saat klik menu */
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+
+body {
+  font-family: var(--font-isi);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--milk);
+}
+
+
+h1, h2, h3 {
+  font-family: var(--font-judul);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 2rem; }
+a { color: inherit; }
+
+
+/* cincin fokus keyboard (terlihat di latar gelap maupun terang) */
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+header :focus-visible, #form-kalkulator :focus-visible { outline-color: var(--ink); }
+
+
+/* 3. Tata letak umum */
+header, section, footer { padding-inline: var(--gutter); }
+section { padding-block: 4rem; }
+
+
+/* 4. Header (Flexbox) */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding-block: 0.8rem;
+  background: #fff;
+  border-bottom: 2px solid var(--ink);
+}
+header h1 {            /* logo seperti stiker miring */
+  padding: 0.1rem 0.7rem;
+  font-size: 1.35rem;
+  background: var(--amber);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  transform: rotate(-2deg);
+}
+nav { display: flex; gap: 1.5rem; }
+nav a {
+  padding-block: 0.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+
+/* 5. Hero (Grid 2 kolom: teks di kiri, daftar keunggulan di kanan) */
+#hero-section {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
+    "judul  daftar"
+    "isi    daftar"
+    "tombol daftar";
+  gap: 1.25rem 3rem;
+  padding-block: clamp(3rem, 8vw, 5.5rem);
+  color: var(--milk);
+  background: var(--ink);
+}
+#hero-section h1 { grid-area: judul; font-size: clamp(2rem, 5.5vw, 3.4rem); }
+#hero-section p  { grid-area: isi; max-width: 55ch; font-size: 1.1rem; opacity: 0.85; }
+.btn-cta         { grid-area: tombol; justify-self: start; }
+
+
+.hero-benefits {
+  grid-area: daftar;
+  align-self: center;
+  list-style: none;
+  padding: 0.5rem 1.5rem;
+  color: var(--ink);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 8px 8px 0 var(--amber);
+}
+.hero-benefits li { position: relative; padding: 0.85rem 0 0.85rem 2.2rem; }
+.hero-benefits li + li { border-top: 2px dashed var(--bean); }
+.hero-benefits li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  display: grid;
+  place-items: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  background: var(--amber);
+  border-radius: 50%;
+}
+
+
+/* 6. Katalog (Grid 3 kolom) */
+.package-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+
+/* 7. Kalkulator: blok kuning, judul di kiri, form di kanan */
+#calc-section {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 3rem;
+  align-items: center;
+  background: var(--amber);
+}
+#calc-section h2 { margin-bottom: 0; font-size: clamp(2rem, 5vw, 3.4rem); }
+
+
+/* 8. Footer */
+footer { padding-block: 2rem; font-size: 0.9rem; color: var(--milk); background: var(--ink); }
+footer p + p { max-width: 70ch; margin-top: 0.4rem; opacity: 0.75; }
+
+
+/* 9. Responsif: tablet (<=900px) dan ponsel (<=600px) */
+@media (max-width: 900px) {
+  #hero-section {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "judul" "isi" "daftar" "tombol";
+  }
+  #calc-section { grid-template-columns: 1fr; gap: 1.5rem; }
+  .package-grid { grid-template-columns: repeat(2, 1fr); }
+  .package-card:last-child:nth-child(odd) { grid-column: 1 / -1; } /* kartu ke-3 melebar */
+}
+@media (max-width: 600px) {
+  header h1 { font-size: 1.15rem; }
+  nav { gap: 0.9rem; font-size: 0.9rem; }
+  .package-grid { grid-template-columns: 1fr; }
+}
+
+
+
+
+/* =========================================================
+   ===== AREA UI/UX 2: KOMPONEN (KARTU, FORM, TOMBOL, HOVER) =====
+   Memakai warna & variabel dari UI/UX 1.
+   ========================================================= */
+
+
+/* A. Kartu katalog: gaya stiker, sudut membulat + bayangan keras */
+.package-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.package-card h3 { font-size: 1.3rem; }
+.package-card p  { font-size: 0.95rem; color: var(--bean); }
+
+
+.package-card .price {     /* harga seperti label harga, rata di dasar kartu */
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.15rem 0.7rem;
+  font-family: var(--font-judul);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--ink);
+  background: var(--amber);
+  border-radius: 8px;
+}
+.package-card .promo-info {  /* garis putus-putus seperti kupon */
+  padding-top: 0.9rem;
+  font-size: 0.85rem;
+  border-top: 2px dashed var(--bean);
+}
+.promo-info strong {
+  padding: 0.1rem 0.5rem;
+  color: var(--amber);
+  background: var(--ink);
+  border-radius: 6px;
+}
+
+
+/* B. Kotak form kalkulator */
+#form-kalkulator {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 var(--ink);
+}
+#form-kalkulator label { margin-top: 0.7rem; font-weight: 700; }
+
+
+#paket, #jumlah, #kode-promo {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--milk);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+}
+
+
+#hasil {                     /* kotak hasil seperti struk belanja */
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  line-height: 1.8;
+  background: var(--milk);
+  border: 2px dashed var(--ink);
+  border-radius: 10px;
+}
+#hasil strong { font-size: 1.2rem; }
+
+
+/* C. Tombol & efek hover (perubahan warna) */
+.btn-cta {
+  padding: 0.9rem 2rem;
+  font-weight: 800;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--amber);
+  border-radius: 999px;
+}
+#tombol-hitung {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.5rem;
+  font: inherit;
+  font-weight: 800;
+  color: #fff;
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.btn-cta, #tombol-hitung, nav a { transition: background 0.2s, color 0.2s, border-color 0.2s; }
+
+
+.btn-cta:hover       { background: var(--milk); }                          /* kuning -> putih susu */
+#tombol-hitung:hover { color: var(--ink); background: var(--amber); }      /* hitam -> kuning */
+nav a:hover          { color: var(--bean); border-color: var(--amber); }   /* garis bawah kuning */
